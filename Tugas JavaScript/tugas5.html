@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>tugas 5</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#notif {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<button id="showNotif">Tampilkan Notifikasi</button>
+
+<div id="notif">CHUACKK</div>
+
+<audio id="notifSound" src="chuaks.mp3"></audio>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$("#showNotif").on("click", function () {
+
+    const sound = document.getElementById("notifSound");
+    sound.currentTime = 0;
+    sound.play();
+
+    $("#notif")
+    .stop(true, true)
+    .css({ backgroundColor: "#28a745", opacity: 0 })
+    .slideDown(400)
+    .animate({ opacity: 1 }, 400)
+    .delay(3000)
+    .slideUp(400)
+    .animate({ opacity: 0 }, 400);
+});
+</script>
+
+</body>
+</html>
